@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.FinfeeMapper">
+
+
+    <select id="getFeeDetail" resultType="com.example.demo.pojo.FinFeeDetail">
+        SELECT
+            ffd.id as id,
+            ffd.fee_no as feeNo,
+            ffd.fin_order_no as finOrderNo
+         FROM fin_fee_detail ffd WHERE ffd.id = #{id};
+    </select>
+
+</mapper>
