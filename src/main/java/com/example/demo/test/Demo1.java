@@ -4,14 +4,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.pojo.Person;
 import com.example.demo.pojo.Pojo;
-import com.example.demo.service.FinfeeService;
 import com.example.demo.utils.BenUtil;
 import com.example.demo.utils.CollectorsUtil;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -23,9 +21,6 @@ import java.util.stream.Collectors;
 
 @SpringBootTest
 public class Demo1 {
-
-    @Resource
-    private FinfeeService finfeeService;
 
     public static void main(String[] args) {
         String s = "9, 10, 11, 12, 1, 2, 3, 4, 5, 6";
