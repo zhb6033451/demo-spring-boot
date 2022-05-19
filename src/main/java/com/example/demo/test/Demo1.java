@@ -1,5 +1,6 @@
 package com.example.demo.test;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.pojo.Person;
@@ -389,4 +390,13 @@ public class Demo1 {
 
     }
 
+    @Test
+    public void test21(){
+        String a = "";
+        String b = null;
+        String c = "12";
+        System.out.println (StrUtil.isBlank (a));
+        System.out.println (StrUtil.isBlank (b));
+        System.out.println (StrUtil.isBlank (c));
+    }
 }
