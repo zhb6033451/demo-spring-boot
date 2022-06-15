@@ -17,6 +17,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,9 +27,8 @@ public class Demo1 {
     public static void main(String[] args) {
         String s = "9, 10, 11, 12, 1, 2, 3, 4, 5, 6";
         String[] split = s.split (",");
-        List list = new ArrayList();
-        for (String s1 : split) {list.add (Integer.valueOf(s1.trim ()));}
-        System.out.println (list);
+        List list = Arrays.asList (split);
+        System.out.println (LocalDateTime.now());
     }
 
     public static void test1(){
@@ -69,6 +69,16 @@ public class Demo1 {
             count +=6;
             num ++;
         }
+    }
+
+    @Test
+    public void test01(){
+        Double jc = 36000.0;
+        Double gdzh = 5436.0;
+        Double bfzh = 0.076;
+        Double zh = 0.0;
+        zh = (jc + gdzh) * (1.0 + bfzh);
+        System.out.println (zh);
     }
 
     @Test
