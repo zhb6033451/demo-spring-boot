@@ -28,8 +28,18 @@ public class FinfeeServiceImpl extends ServiceImpl<FinfeeMapper, FinFeeDetail> i
     }
 
     @Override
-    @Transactional( rollbackFor = Exception.class)
+    @Transactional( rollbackFor = Throwable.class)
     public void error1(Integer id) {
-        finfeeService2.error2 (id);
+        // finfeeService2.error2 (id);
+        this.updateFee (id);
+        // throw new RuntimeException("error1");
+    }
+
+    public void updateFee(Integer id){
+        FinFeeDetail finFeeDetail = baseMapper.selectById (id);
+        System.out.println (finFeeDetail.getItemId ());
+        finFeeDetail.setItemId (1111);
+        baseMapper.updateById (finFeeDetail);
+        System.out.println ("updateFee");
     }
 }

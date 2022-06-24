@@ -53,12 +53,7 @@ public class FinfeeController {
 
     @GetMapping("/error/{id}")
     public String getError(@PathVariable("id") Integer id){
-        try {
-            finfeeService.error1 (id);
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println ("catch");
-        }
+        finfeeService.error1 (id);
         return "error";
     }
 

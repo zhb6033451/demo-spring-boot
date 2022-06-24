@@ -144,21 +144,21 @@ public class FushiDemo1 {
         System.out.println ("-------名称过滤完毕---------");
         // 结束时间
         System.out.println ("结束时间: "+LocalDateTime.now());
-        System.out.println ("----------数值排序过滤------------");
+        System.out.println ("----------数值排序过滤完毕------------");
         // 总和降序
         List<FushiList> fushiListByZh = zhFushiList.stream ().sorted (Comparator.comparing (FushiList::getZh).reversed ()).collect (Collectors.toList ());
         int countttt1 = 0;
         for (FushiList zh : fushiListByZh) {
             countttt1++;
-            if (countttt1<2){
+            if (countttt1<0){
                 zh.getFushiList ().forEach (b -> System.out.println (b));
                 System.out.println ("固定总和 :" + zh.getGdzh () + "百分总和: " + zh.getBfzh () + " 最终数值: " + zh.getZh () );
                 System.out.println ("------------");
             }
         }
-        System.out.println ("----------取去重后前4套------------");
+        System.out.println ("----------取去重后前6套------------");
         List<FushiList> fourFushiList = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             FushiList fushiList = fushiListByZh.get (0);
             fourFushiList.add(fushiList);
             fushiListByZh = getOne (fushiListByZh);
