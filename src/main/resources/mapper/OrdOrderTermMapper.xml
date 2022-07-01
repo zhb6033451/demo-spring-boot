@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.OrdOrderTermMapper">
+
+
+    <resultMap type="com.example.demo.pojo.OrdOrderTerm" id="OrdOrderTermMap">
+        <result column="id" property="id" />
+        <result column="term_order_no" property="termOrderNo" />
+        <result column="order_no" property="orderNo" />
+        <result column="order_type" property="orderType" />
+        <result column="sno" property="sno" />
+        <result column="full_name" property="fullName" />
+        <result column="pay_owner_type" property="payOwnerType" />
+        <result column="sign_year_type" property="signYearType" />
+        <result column="sign_term_type" property="signTermType" />
+        <result column="standard_amount" property="standardAmount" />
+        <result column="total_amount" property="totalAmount" />
+        <result column="actual_amount" property="actualAmount" />
+        <result column="discount_amount" property="discountAmount" />
+        <result column="timeliness_standard_amount" property="timelinessStandardAmount" />
+        <result column="timeliness_discount_amount" property="timelinessDiscountAmount" />
+        <result column="timeliness_amount" property="timelinessAmount" />
+        <result column="timeliness_actual_amount" property="timelinessActualAmount" />
+        <result column="refund_amount" property="refundAmount" />
+        <result column="pay_channel_no" property="payChannelNo" />
+        <result column="pay_time" property="payTime" />
+        <result column="payment_no" property="paymentNo" />
+        <result column="order_pay_status" property="orderPayStatus" />
+        <result column="need_refund_status" property="needRefundStatus" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="creator" property="creator" />
+        <result column="payable_amount" property="payableAmount" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="editor" property="editor" />
+        <result column="timeliness_payable_amount" property="timelinessPayableAmount" />
+        <result column="order_send_status" property="orderSendStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                id,
+                term_order_no,
+                order_no,
+                order_type,
+                sno,
+                full_name,
+                pay_owner_type,
+                sign_year_type,
+                sign_term_type,
+                standard_amount,
+                total_amount,
+                actual_amount,
+                discount_amount,
+                timeliness_standard_amount,
+                timeliness_discount_amount,
+                timeliness_amount,
+                timeliness_actual_amount,
+                refund_amount,
+                pay_channel_no,
+                pay_time,
+                payment_no,
+                order_pay_status,
+                need_refund_status,
+                is_deleted,
+                creator,
+                payable_amount,
+                create_time,
+                update_time,
+                editor,
+                timeliness_payable_amount,
+                order_send_status
+    </sql>
+
+    <select id="queryByTermOrderNo" resultMap="OrdOrderTermMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM ord_order_term
+        WHERE term_order_no = #{termOrderNo}
+    </select>
+
+</mapper>
