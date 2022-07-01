@@ -24,7 +24,7 @@ public class FushiDemo1 {
         String[] counts = {"1", "2", "3", "4", "5", "6"};
         //
         List<FushiList> zhFushiList = new ArrayList ();
-        ExcelReader reader = ExcelUtil.getReader ("E:/坚果云同步/我的坚果云/我的坚果云/游戏/爆裂魔女/model.xlsx");
+        ExcelReader reader = ExcelUtil.getReader ("E:/坚果云同步/我的坚果云/我的坚果云/游戏/爆裂魔女/model1.xlsx");
         List<Fushi> fushis = reader.readAll (Fushi.class);
         // 首先根据位置分组,共6组
         List<Fushi> count1 = fushis.stream ().filter (a -> counts[0].equals (a.getCount ())).collect (Collectors.toList ());
@@ -156,16 +156,19 @@ public class FushiDemo1 {
                 System.out.println ("------------");
             }
         }
-        System.out.println ("----------取去重后前6套------------");
+        int num99 = 5;
+        System.out.println ("----------取去重后前"+num99+"套------------");
         List<FushiList> fourFushiList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < num99; i++) {
             FushiList fushiList = fushiListByZh.get (0);
             fourFushiList.add(fushiList);
             fushiListByZh = getOne (fushiListByZh);
         }
+        int num88 = 1;
         for (FushiList zh : fourFushiList) {
             zh.getFushiList ().forEach (b -> System.out.println (b));
-            System.out.println ("固定总和 :" + zh.getGdzh () + "百分总和: " + zh.getBfzh () + " 最终数值: " + zh.getZh () );
+            System.out.println ("第"+num88+"套固定总和 :" + zh.getGdzh () + "百分总和: " + zh.getBfzh () + " 最终数值: " + zh.getZh () );
+            num88++;
             System.out.println ("------------");
         }
     }
