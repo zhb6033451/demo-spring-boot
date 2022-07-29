@@ -409,4 +409,13 @@ public class Demo1 {
         System.out.println (StrUtil.isBlank (b));
         System.out.println (StrUtil.isBlank (c));
     }
+
+    @Test
+    public void test22(){
+        BigDecimal num = BigDecimal.ZERO;
+        for (int i = 0; i < 10; i++) {
+            num = num.add (new BigDecimal ("1"));
+        }
+        System.out.println (num);
+    }
 }
