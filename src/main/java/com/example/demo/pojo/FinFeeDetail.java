@@ -3,6 +3,7 @@ package com.example.demo.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -191,5 +192,29 @@ public class FinFeeDetail extends BaseDO {
      * order_fin_fee 的冗余orderNo（不冗余subOrderNo)
      */
     private String finOrderNo;
+
+    @ApiModelProperty(value = "应退金额")
+    private BigDecimal refundAmount;
+
+    @ApiModelProperty(value = "财务核定退费金额")
+    private BigDecimal financeRefundAmount;
+
+    @ApiModelProperty(value = "备注")
+    private String remark;
+
+    @ApiModelProperty(value = "原实时应缴")
+    private BigDecimal oldTimelinessAmount;
+
+    @ApiModelProperty(value = "实收-应退金额")
+    private BigDecimal ActurlRefundAmount;
+
+    @ApiModelProperty(value = "实退金额")
+    private BigDecimal timelinessRefundAmount;
+
+    @ApiModelProperty(value = "系统实际退费/补费类型")
+    private String rasAmountType;
+
+    @ApiModelProperty(value = "系统实际退费/补费总额")
+    private BigDecimal rasAmount;
 }
 
