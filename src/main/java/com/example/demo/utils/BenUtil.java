@@ -7,9 +7,7 @@ import org.slf4j.LoggerFactory;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -60,6 +58,7 @@ public class BenUtil {
         }));
     }
 
+    // 压缩
     public static String compress(String str) {
         if (StringUtils.isBlank(str)) {
             return str;
@@ -90,6 +89,7 @@ public class BenUtil {
         }
     }
 
+    // 解压
     public static String uncompress(String compressedStr) {
         if (StringUtils.isBlank(compressedStr)) {
             return compressedStr;
@@ -142,6 +142,18 @@ public class BenUtil {
 
             return var7;
         }
+    }
+
+    //关键代码 运行序列化和反序列化  进行深度拷贝
+    public static <T> List<T> deepCopy(List<T> src) throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream ();
+        ObjectOutputStream out = new ObjectOutputStream(byteOut);
+        out.writeObject(src);
+        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+        ObjectInputStream in = new ObjectInputStream(byteIn);
+        @SuppressWarnings("unchecked")
+        List<T> dest = (List<T>) in.readObject();
+        return dest;
     }
 
 }
