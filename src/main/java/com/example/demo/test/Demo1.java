@@ -3,6 +3,7 @@ package com.example.demo.test;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.pojo.OrdOrderTermModel;
 import com.example.demo.pojo.Person;
 import com.example.demo.pojo.Pojo;
 import com.example.demo.utils.BenUtil;
@@ -417,5 +418,40 @@ public class Demo1 {
             num = num.add (new BigDecimal ("1"));
         }
         System.out.println (num);
+    }
+
+    @Test
+    public void test23(){
+        List<Person> personList = Person.getPersonList ();
+        List<Person> alisaList = new ArrayList<>();
+        alisaList.add (new Person ("Alisa", 7900, "female", "New York", new BigDecimal ("666")));
+        alisaList.stream ().forEach (a -> {
+            personList.add (a);
+        });
+        alisaList.get (0).setSalary (0);
+        // personList.add (alisaList.get (0));
+        System.out.println (personList);
+    }
+
+    @Test
+    public void test24(){
+        List<Person> personList = Person.getPersonList ();
+        List<Person> personListTemp = this.getPersonList (personList);
+        System.out.println (personList.get (0));
+        System.out.println (personListTemp.get (0));
+    }
+
+    public List<Person> getPersonList(List<Person> personList){
+        return personList;
+    }
+
+    @Test
+    public void test25(){
+        OrdOrderTermModel ordOrderTermModel = new OrdOrderTermModel ();
+        if(ordOrderTermModel.getIsRefundPay ()){
+            System.out.println ("1");
+        }else {
+            System.out.println ("0");
+        }
     }
 }
