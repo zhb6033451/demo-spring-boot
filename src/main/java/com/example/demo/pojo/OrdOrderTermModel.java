@@ -168,4 +168,12 @@ public class OrdOrderTermModel implements Serializable {
      */
     private String orderSendStatus;
 
+    private Boolean isRefundPay;
+
+    public Boolean getIsRefundPay() {
+        if (isRefundPay == null)
+            return false;
+        return isRefundPay;
+    }
+
 }
