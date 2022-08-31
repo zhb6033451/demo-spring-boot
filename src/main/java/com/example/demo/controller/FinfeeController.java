@@ -4,12 +4,10 @@ import com.example.demo.pojo.FinFeeDetail;
 import com.example.demo.service.FinfeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Random;
 
 
@@ -75,6 +73,11 @@ public class FinfeeController {
         finFeeDetail.setItemId (333);
         finfeeService.updateById (finFeeDetail);
         throw new Exception();
+    }
+
+    @PostMapping("/jieya")
+    public List getFeeDetails(@RequestBody String info){
+        return finfeeService.getFeeList (info);
     }
 
 

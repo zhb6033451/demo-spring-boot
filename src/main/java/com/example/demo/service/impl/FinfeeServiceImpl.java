@@ -1,15 +1,18 @@
 package com.example.demo.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.mapper.FinfeeMapper;
 import com.example.demo.pojo.FinFeeDetail;
 import com.example.demo.service.FinfeeService;
 import com.example.demo.service.FinfeeService2;
+import com.example.demo.utils.BenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Slf4j
@@ -33,6 +36,13 @@ public class FinfeeServiceImpl extends ServiceImpl<FinfeeMapper, FinFeeDetail> i
         // finfeeService2.error2 (id);
         this.updateFee (id);
         // throw new RuntimeException("error1");
+    }
+
+    @Override
+    public List getFeeList(String info) {
+        String uncompress = BenUtil.uncompress (info);
+        List<FinFeeDetail> finFeeDetails = JSONObject.parseArray (uncompress, FinFeeDetail.class);
+        return finFeeDetails;
     }
 
     public void updateFee(Integer id){

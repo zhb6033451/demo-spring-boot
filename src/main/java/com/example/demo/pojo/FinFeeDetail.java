@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 
 /**
@@ -147,6 +148,7 @@ public class FinFeeDetail extends BaseDO {
     /**
      * 是否调整(0否 1是)
      */
+    @Column(columnDefinition = "Boolean defalut '0'")
     private Boolean isAdjust;
 
     /**
