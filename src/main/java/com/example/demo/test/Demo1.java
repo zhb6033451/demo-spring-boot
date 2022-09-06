@@ -17,8 +17,10 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -453,5 +455,13 @@ public class Demo1 {
         }else {
             System.out.println ("0");
         }
+    }
+
+    @Test
+    public void test26(){
+        LocalDate parse = LocalDate.parse ("2022-09-01");
+        ZoneId zone = ZoneId.systemDefault();
+        Instant instant = parse.atStartOfDay().atZone(zone).toInstant();
+        System.out.println (Date.from(instant));
     }
 }
