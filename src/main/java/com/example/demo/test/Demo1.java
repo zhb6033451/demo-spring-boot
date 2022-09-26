@@ -438,9 +438,11 @@ public class Demo1 {
     @Test
     public void test24(){
         List<Person> personList = Person.getPersonList ();
-        List<Person> personListTemp = this.getPersonList (personList);
-        System.out.println (personList.get (0));
-        System.out.println (personListTemp.get (0));
+        String name = null;
+        name = personList.get (0).getName ();
+        personList.get (0).setName ("1111");
+        System.out.println (name);
+        System.out.println (personList.get (0).getName ());
     }
 
     public List<Person> getPersonList(List<Person> personList){
@@ -463,5 +465,10 @@ public class Demo1 {
         ZoneId zone = ZoneId.systemDefault();
         Instant instant = parse.atStartOfDay().atZone(zone).toInstant();
         System.out.println (Date.from(instant));
+    }
+
+    @Test
+    public void test27(){
+
     }
 }
