@@ -469,6 +469,38 @@ public class Demo1 {
 
     @Test
     public void test27(){
-        System.out.println ("test");
+        // 1. 对于 String 列表去重
+        List<String> stringList = new ArrayList<String> () {{
+            add ("A"); add ("A"); add ("B"); add ("B"); add ("C");
+        }};
+        System.out.print ("去重前：");
+        for (String s : stringList) {
+            System.out.print (s);
+        }
+        System.out.println ();
+        stringList = stringList.stream ().distinct ().collect (Collectors.toList ());
+        System.out.print ("去重后：");
+        for (String s : stringList) {
+            System.out.print (s);
+        }
+        System.out.println ();
+    }
+
+    @Test
+    public void test28(){
+        // 入参
+        List<String> stringList1 = new ArrayList<String> () {{
+            add ("A"); add ("B"); add ("C"); add ("D"); add ("E");
+        }};
+        // 数据库
+        List<String> stringList2 = new ArrayList<String> () {{
+            add ("A"); add ("B"); add ("C"); add ("E");
+        }};
+        System.out.println (stringList1);
+        System.out.println (stringList2);
+        List<String> stringList3 = stringList1.stream ().filter (a -> {
+            return !stringList2.contains (a);
+        }).collect (Collectors.toList ());
+        System.out.println (stringList3);
     }
 }
