@@ -503,4 +503,11 @@ public class Demo1 {
         }).collect (Collectors.toList ());
         System.out.println (stringList3);
     }
+
+    @Test
+    public void test29(){
+        BigDecimal num = BigDecimal.ZERO;
+        num = null;
+        System.out.println (num);
+    }
 }
