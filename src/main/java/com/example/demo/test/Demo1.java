@@ -506,8 +506,17 @@ public class Demo1 {
 
     @Test
     public void test29(){
-        BigDecimal num = BigDecimal.ZERO;
-        num = null;
-        System.out.println (num);
+
+        System.out.println (change ());
+    }
+
+    public boolean change(){
+        boolean flag = false;
+        for (int i = 0; i < 10; i++) {
+            if (i == 7){
+                flag = true;
+            }
+        }
+        return flag;
     }
 }
