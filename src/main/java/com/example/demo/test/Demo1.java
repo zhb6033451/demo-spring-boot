@@ -3,6 +3,7 @@ package com.example.demo.test;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.pojo.FinFeeDetail;
 import com.example.demo.pojo.OrdOrderTermModel;
 import com.example.demo.pojo.Person;
 import com.example.demo.pojo.Pojo;
@@ -506,17 +507,15 @@ public class Demo1 {
 
     @Test
     public void test29(){
-
-        System.out.println (change ());
+        FinFeeDetail finFeeDetail = new FinFeeDetail ();
+        finFeeDetail.setIsFlow (false);
+        List<Person> personList = change (finFeeDetail);
+        System.out.println (finFeeDetail.getIsFlow ());
     }
 
-    public boolean change(){
-        boolean flag = false;
-        for (int i = 0; i < 10; i++) {
-            if (i == 7){
-                flag = true;
-            }
-        }
-        return flag;
+    public List<Person> change(FinFeeDetail finFeeDetail){
+        List<Person> personList = Person.getPersonList ();
+        finFeeDetail.setIsFlow (true);
+        return personList;
     }
 }
