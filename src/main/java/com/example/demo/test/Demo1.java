@@ -518,4 +518,18 @@ public class Demo1 {
         finFeeDetail.setIsFlow (true);
         return personList;
     }
+
+    @Test
+    public void test30(){
+        try {
+            error30 ();
+        } catch (Exception e) {
+            System.out.println ("报错咧");
+        }
+    }
+
+    public void error30(){
+        int i = 1;
+        i = i / 0;
+    }
 }
