@@ -9,6 +9,7 @@ import com.example.demo.pojo.Person;
 import com.example.demo.pojo.Pojo;
 import com.example.demo.utils.BenUtil;
 import com.example.demo.utils.CollectorsUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @SpringBootTest
@@ -531,5 +534,21 @@ public class Demo1 {
     public void error30(){
         int i = 1;
         i = i / 0;
+    }
+
+    @Test
+    public void test31() {
+        //1.创建匹配模式
+        Pattern pattern = Pattern.compile ("^[\\d-+—]{0,20}$");
+        String str = "133_";
+        //2.选择匹配对象
+        if (StringUtils.isNotBlank (str)){
+            Matcher matcher = pattern.matcher (str);
+            //与谁匹配？与参数字符串str匹配
+            boolean matches = matcher.matches();
+            System.out.println(matches);
+        }else {
+            System.out.println ("null");
+        }
     }
 }
