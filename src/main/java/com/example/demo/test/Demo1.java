@@ -539,8 +539,8 @@ public class Demo1 {
     @Test
     public void test31() {
         //1.创建匹配模式
-        Pattern pattern = Pattern.compile ("^[\\d-+—]{0,20}$");
-        String str = "133_";
+        Pattern pattern = Pattern.compile ("^[\\d-－+＋—]{0,20}$");
+        String str = "010－5569844";
         //2.选择匹配对象
         if (StringUtils.isNotBlank (str)){
             Matcher matcher = pattern.matcher (str);
@@ -550,5 +550,11 @@ public class Demo1 {
         }else {
             System.out.println ("null");
         }
+    }
+
+    @Test
+    public void test32(){
+        BigDecimal num = null;
+        System.out.println (num);
     }
 }
