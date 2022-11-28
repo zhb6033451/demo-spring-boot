@@ -554,7 +554,25 @@ public class Demo1 {
 
     @Test
     public void test32(){
-        BigDecimal num = null;
-        System.out.println (num);
+        BigDecimal num = new BigDecimal ("10001");
+        if ("".equals(num) || num == null){
+            System.out.println ("null");
+        }
+        if (BigDecimal.ZERO.compareTo (num) == 0){
+            System.out.println ("不能为0");
+        }else {
+            if (new BigDecimal (num.intValue ()).compareTo (num) != 0){
+                System.out.println ("不为整数");
+            }else {
+                if ((new BigDecimal ("-10000").compareTo (num) > 0) || (new BigDecimal ("10000").compareTo (num) < 0)){
+                    System.out.println ("-10000-10000以内");
+                }
+            }
+        }
+    }
+
+    @Test
+    public void test33(){
+
     }
 }
