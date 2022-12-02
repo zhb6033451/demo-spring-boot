@@ -35,16 +35,17 @@ public class Person {
 
     public static List<Person> getPersonList() {
         List<Person> personList = new ArrayList<Person> ();
-        personList.add (new Person ("Tom", 8900, "male", "New York", new BigDecimal ("333")));
-        personList.add (new Person ("Tom", 8900, "male", "New York", new BigDecimal ("333")));
-        personList.add (new Person ("Tom", 8900, "male", "New York", new BigDecimal ("333")));
+        personList.add (new Person ("Tom", 6000, "male", "New York", new BigDecimal ("333")));
+        personList.add (new Person ("Ato", 7800, "male", "New York", new BigDecimal ("333")));
+        personList.add (new Person ("Kal", 5600, "male", "New York", new BigDecimal ("333")));
         personList.add (new Person ("Jack", 7000, "male", "Washington", new BigDecimal ("123")));
-        personList.add (new Person ("Lily", 7800, "female", "Washington", new BigDecimal ("222")));
-        personList.add (new Person ("Lily", 7800, "female", "Washington", new BigDecimal ("222")));
-        personList.add (new Person ("Lily", 7800, "female", "Washington", new BigDecimal ("222")));
-        personList.add (new Person ("Anni", 8200, "female", "New York", new BigDecimal ("444")));
-        personList.add (new Person ("Owen", 9500, "male", "New York", new BigDecimal ("555")));
-        // personList.add (new Person ("Alisa", 7900, "female", "New York", new BigDecimal ("666")));
+        personList.add (new Person ("Jiy", 6200, "female", "Washington", new BigDecimal ("222")));
+        personList.add (new Person ("Ter", 9100, "female", "Washington", new BigDecimal ("222")));
+        personList.add (new Person ("Lily", 8300, "female", "Washington", new BigDecimal ("222")));
+        personList.add (new Person ("Cdf", 8200, "female", "California", new BigDecimal ("444")));
+        personList.add (new Person ("Anni", 8200, "female", "California", new BigDecimal ("444")));
+        personList.add (new Person ("Owen", 9500, "male", "California", new BigDecimal ("555")));
+        personList.add (new Person ("Alisa", 7900, "female", "California", new BigDecimal ("666")));
         return personList;
     }
 

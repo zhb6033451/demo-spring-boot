@@ -573,6 +573,28 @@ public class Demo1 {
 
     @Test
     public void test33(){
+        List<Person> personList = Person.getPersonList ();
+        List<String> stringList = Arrays.asList ("California", "New York", "Washington");
+        List<Person> collect = personList.stream ().sorted (Comparator.comparing (Person::getSalary).reversed ()).collect (Collectors.toList ());
+        collect.forEach (System.out::println);
+        Collections.sort (collect,((o1,o2) -> {
+            int io1 = stringList.indexOf (o1.getArea ());
+            int io2 = stringList.indexOf (o2.getArea ());
+            if (io1 != -1){
+                io1 = collect.size () - io1;
+            }
+            if (io2 != -1){
+                io2 = collect.size () - io2;
+            }
+            return io2 - io1;
+        }));
+        System.out.println ("-------------------------");
+        collect.forEach (System.out::println);
+    }
 
+    @Test
+    public void test34(){
+        List list = null;
+        System.out.println (list.size ());
     }
 }
