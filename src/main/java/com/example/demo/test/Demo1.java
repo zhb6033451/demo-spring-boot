@@ -575,21 +575,33 @@ public class Demo1 {
     public void test33(){
         List<Person> personList = Person.getPersonList ();
         List<String> stringList = Arrays.asList ("California", "New York", "Washington");
-        List<Person> collect = personList.stream ().sorted (Comparator.comparing (Person::getSalary).reversed ()).collect (Collectors.toList ());
-        collect.forEach (System.out::println);
-        Collections.sort (collect,((o1,o2) -> {
+        List<Integer> stringList2 = Arrays.asList (5600,6000,6200,7000,7800,7900,8200,8300,8400,9500,9100);
+        // List<Person> collect = personList.stream ().sorted (Comparator.comparing (Person::getSalary).reversed ()).collect (Collectors.toList ());
+        Collections.sort (personList,((o1,o2) -> {
+            int io1 = stringList2.indexOf (o1.getSalary ());
+            int io2 = stringList2.indexOf (o2.getSalary ());
+            if (io1 != -1){
+                io1 = stringList2.size () - io1;
+            }
+            if (io2 != -1){
+                io2 = stringList2.size () - io2;
+            }
+            return io2 - io1;
+        }));
+        personList.forEach (System.out::println);
+        Collections.sort (personList,((o1,o2) -> {
             int io1 = stringList.indexOf (o1.getArea ());
             int io2 = stringList.indexOf (o2.getArea ());
             if (io1 != -1){
-                io1 = collect.size () - io1;
+                io1 = personList.size () - io1;
             }
             if (io2 != -1){
-                io2 = collect.size () - io2;
+                io2 = personList.size () - io2;
             }
             return io2 - io1;
         }));
         System.out.println ("-------------------------");
-        collect.forEach (System.out::println);
+        personList.forEach (System.out::println);
     }
 
     @Test
