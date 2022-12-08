@@ -23,6 +23,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -606,7 +607,9 @@ public class Demo1 {
 
     @Test
     public void test34(){
-        List list = null;
-        System.out.println (list.size ());
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime parseTime = LocalDateTime.parse("2022-12-16 00:00:00", pattern);
+        Date date = Date.from (parseTime.atZone (ZoneId.systemDefault ()).toInstant ());
+        System.out.println (date);
     }
 }
