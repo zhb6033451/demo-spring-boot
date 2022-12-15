@@ -612,4 +612,12 @@ public class Demo1 {
         Date date = Date.from (parseTime.atZone (ZoneId.systemDefault ()).toInstant ());
         System.out.println (date);
     }
+
+    @Test
+    public void test35(){
+        List<Person> personList = Person.getPersonList ();
+        long count = personList.stream ().filter (p -> "Tom".equals (p.getName ())).count ();
+        System.out.println (count);
+        System.out.println (count > 2);
+    }
 }
