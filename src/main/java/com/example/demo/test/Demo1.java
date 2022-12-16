@@ -620,4 +620,13 @@ public class Demo1 {
         System.out.println (count);
         System.out.println (count > 2);
     }
+
+    @Test
+    public void test36(){
+        Map<String, List<String>> accountMap = new HashMap<> ();
+        accountMap.put ("1",Arrays.asList ("1","2"));
+        accountMap.put ("2",Arrays.asList ("1","2"));
+        accountMap.put ("3",Arrays.asList ("1","2"));
+        System.out.println (accountMap.get ("4"));
+    }
 }
