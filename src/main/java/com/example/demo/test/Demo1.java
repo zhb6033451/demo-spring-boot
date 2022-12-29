@@ -629,4 +629,13 @@ public class Demo1 {
         accountMap.put ("3",Arrays.asList ("1","2"));
         System.out.println (accountMap.get ("4"));
     }
+
+    @Test
+    public void test37(){
+        String msg = "政府学位补贴减免费用说明：{name}学生您应交基础学费为{amount1}元/学年，在小学阶段将享受政府学位补贴费4200元/学年（中途转入转出按月折算），最终您应交基础学费为{amount2}元/学年。";
+        msg = msg.replace ("{name}","AAA");
+        // msg.replace ("{amount1}",btTimelinessAmount.add (disAmount).toString ());
+        // msg.replace ("{amount2}",btTimelinessAmount.toString ());
+        System.out.println (msg);
+    }
 }
