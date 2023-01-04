@@ -638,4 +638,14 @@ public class Demo1 {
         // msg.replace ("{amount2}",btTimelinessAmount.toString ());
         System.out.println (msg);
     }
+
+    @Test
+    public void test38(){
+        BigDecimal a = new BigDecimal ("4000");
+        BigDecimal b = a;
+        BigDecimal c = new BigDecimal ("2000");
+        a = a.subtract (c);
+        System.out.println (a);
+        System.out.println (b);
+    }
 }
