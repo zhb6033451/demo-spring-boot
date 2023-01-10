@@ -616,9 +616,8 @@ public class Demo1 {
     @Test
     public void test35(){
         List<Person> personList = Person.getPersonList ();
-        long count = personList.stream ().filter (p -> "Tom".equals (p.getName ())).count ();
-        System.out.println (count);
-        System.out.println (count > 2);
+        Map<String, Integer> collect = personList.stream ().collect (Collectors.toMap (Person::getName, Person::getAge));
+        System.out.println (collect);
     }
 
     @Test
