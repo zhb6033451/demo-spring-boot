@@ -645,4 +645,13 @@ public class Demo1 {
         a.add (c);
         System.out.println (a);
     }
+
+    @Test
+    public void test39(){
+        String a = "sda,31";
+        String[] split = a.split (",");
+        System.out.println (split.length);
+        System.out.println (split[0]);
+        System.out.println (split[1]);
+    }
 }
