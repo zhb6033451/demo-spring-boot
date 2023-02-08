@@ -654,4 +654,11 @@ public class Demo1 {
         System.out.println (split[0]);
         System.out.println (split[1]);
     }
+
+    @Test
+    public void test40(){
+        String[] arrays = {"dasda","Adasd"};
+        List<String> strings = Arrays.asList (arrays);
+        strings.add ("asdsa");
+    }
 }
