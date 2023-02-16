@@ -661,4 +661,14 @@ public class Demo1 {
         List<String> strings = Arrays.asList (arrays);
         strings.add ("asdsa");
     }
+
+    @Test
+    public void test41(){
+        String s = "TMBM23123011";
+        if(s.startsWith("TM")){
+            s = s.substring (2, s.length () - 1);
+        }
+        System.out.println (s);
+    }
+
 }
