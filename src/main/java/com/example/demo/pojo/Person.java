@@ -15,6 +15,10 @@ public class Person {
     private String area;  // 地区
     private BigDecimal money;
 
+    public Person(){
+
+    }
+
     // 构造方法
     public Person(String name, int salary, int age, String sex, String area) {
         this.name = name;
@@ -31,6 +35,7 @@ public class Person {
         this.area = area;
         this.money = money;
     }
+
     // 省略了get和set，请自行添加
 
     public static List<Person> getPersonList() {

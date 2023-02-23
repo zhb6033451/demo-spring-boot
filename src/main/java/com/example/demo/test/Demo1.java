@@ -671,4 +671,10 @@ public class Demo1 {
         System.out.println (s);
     }
 
+    @Test
+    public void test42(){
+        FinFeeDetail f = new FinFeeDetail ();
+        Person p = new Person ();
+        p.setName (f.getItemName ());
+    }
 }
