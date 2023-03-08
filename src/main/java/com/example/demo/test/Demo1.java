@@ -11,6 +11,7 @@ import com.example.demo.utils.BenUtil;
 import com.example.demo.utils.CollectorsUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -676,5 +677,28 @@ public class Demo1 {
         FinFeeDetail f = new FinFeeDetail ();
         Person p = new Person ();
         p.setName (f.getItemName ());
+    }
+
+    @Test
+    public void test43(){
+        List<Person> personList = Person.getPersonList ();
+        System.out.println (personList.get (0).getName ());
+        List<Person> personList2 = personList;
+        System.out.println (personList2.get (0).getName ());
+        personList.stream ().forEach (a -> a.setName ("233123"));
+        List<Person> personList3 = personList;
+        System.out.println (personList.get (0).getName ());
+        System.out.println (personList2.get (0).getName ());
+        System.out.println (personList3.get (0).getName ());
+    }
+
+    @Test
+    public void test44(){
+        FinFeeDetail f = new FinFeeDetail ();
+        f.setItemCode ("33");
+        FinFeeDetail f2 = new FinFeeDetail ();
+        BeanUtils.copyProperties (f,f2);
+        f.setItemCode ("22");
+        System.out.println (f2.getItemCode ());
     }
 }
