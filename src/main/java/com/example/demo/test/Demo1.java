@@ -701,4 +701,9 @@ public class Demo1 {
         f.setItemCode ("22");
         System.out.println (f2.getItemCode ());
     }
+
+    @Test
+    public void test45(){
+        System.out.println (cn.hutool.core.lang.UUID.randomUUID ().toString ());
+    }
 }
