@@ -706,4 +706,11 @@ public class Demo1 {
     public void test45(){
         System.out.println (cn.hutool.core.lang.UUID.randomUUID ().toString ());
     }
+
+    @Test
+    public void test46(){
+        String num = "";
+        System.out.println (StringUtils.isBlank (num));
+        System.out.println ("".equals (num));
+    }
 }
