@@ -1,5 +1,6 @@
 package com.example.demo.test;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -681,15 +682,18 @@ public class Demo1 {
 
     @Test
     public void test43(){
+        Map<String,List<Person>> map = new HashMap ();
         List<Person> personList = Person.getPersonList ();
         System.out.println (personList.get (0).getName ());
-        List<Person> personList2 = personList;
-        System.out.println (personList2.get (0).getName ());
-        personList.stream ().forEach (a -> a.setName ("233123"));
-        List<Person> personList3 = personList;
-        System.out.println (personList.get (0).getName ());
-        System.out.println (personList2.get (0).getName ());
-        System.out.println (personList3.get (0).getName ());
+        map.put ("1",personList);
+        List<Person> personList2 = new ArrayList<> ();
+        for (Person person : personList) {
+            personList2.add (ObjectUtil.clone (person));
+        }
+        map.put ("2", personList2);
+        map.get("2").forEach (a -> a.setName ("233123"));
+        System.out.println (map.get ("1").get (0).getName ());
+        System.out.println (map.get ("2").get (0).getName ());
     }
 
     @Test

@@ -2,12 +2,14 @@ package com.example.demo.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class Person {
+public class Person implements Serializable {
+    private static final long serialVersionUID = -197997833123141L;
     private String name;  // 姓名
     private int salary; // 薪资
     private int age; // 年龄
