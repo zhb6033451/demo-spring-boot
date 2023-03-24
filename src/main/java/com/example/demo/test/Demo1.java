@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StopWatch;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -716,5 +717,19 @@ public class Demo1 {
         String num = "";
         System.out.println (StringUtils.isBlank (num));
         System.out.println ("".equals (num));
+    }
+
+    @Test
+    public void test47(){
+        StopWatch stopWatch = new StopWatch ();
+        stopWatch.start ();
+        int num = 0;
+        for (int i = 0;i<10000;i++){
+            num = num + Math.round (10);
+        }
+        System.out.println (num);
+        stopWatch.stop ();
+        System.out.println (stopWatch.getTotalTimeMillis ());
+        System.out.println (stopWatch.getTotalTimeSeconds ());
     }
 }
