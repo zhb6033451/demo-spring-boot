@@ -9,6 +9,7 @@
         SELECT
             ffd.id as id,
             ffd.fee_no as feeNo,
+            ffd.item_name as itemName,
             ffd.fin_order_no as finOrderNo
          FROM fin_fee_detail ffd WHERE ffd.id = #{id};
     </select>

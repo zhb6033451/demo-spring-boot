@@ -177,20 +177,6 @@ public class FinFeeDetail extends BaseDO {
     private BigDecimal timelinessStandardAmount;
 
     /**
-     * get应缴金额
-     */
-    public BigDecimal getAmountNotNull() {
-        return this.amount == null ? BigDecimal.ZERO : this.amount;
-    }
-
-    /**
-     * get应付金额
-     */
-    public BigDecimal getPayableAmountNotNull() {
-        return this.payableAmount == null ? BigDecimal.ZERO : this.getPayableAmount();
-    }
-
-    /**
      * order_fin_fee 的冗余orderNo（不冗余subOrderNo)
      */
     private String finOrderNo;

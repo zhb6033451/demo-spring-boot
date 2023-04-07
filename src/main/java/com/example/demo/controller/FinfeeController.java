@@ -22,8 +22,9 @@ public class FinfeeController {
 
     @GetMapping("/getone/{id}")
     public String getFinfee(@PathVariable("id") Integer id){
-        FinFeeDetail finFeeDetail = finfeeService.getById (id);
-        return finFeeDetail.getItemId ()+"";
+        // FinFeeDetail finFeeDetail = finfeeService.getById (id);
+        FinFeeDetail finFeeDetail = finfeeService.getFeeDetail (id);
+        return "查询到:" + finFeeDetail.getItemName ();
     }
 
 
