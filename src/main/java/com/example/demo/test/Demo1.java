@@ -732,4 +732,11 @@ public class Demo1 {
         System.out.println (stopWatch.getTotalTimeMillis ());
         System.out.println (stopWatch.getTotalTimeSeconds ());
     }
+
+    @Test
+    public void test48(){
+        List<Person> personList = Person.getPersonList ();
+        List<Person> collect = personList.stream ().filter (a -> !"Tom".equals (a.getName ()) && !"Ato".equals (a.getName ())).collect (Collectors.toList ());
+        System.out.println (collect);
+    }
 }
