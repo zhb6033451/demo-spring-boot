@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StopWatch;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -280,7 +281,7 @@ public class Demo1 {
         System.out.println (collect.get (collect.size ()-1));
         List<String> collect1 = collect.stream ()
                 // .filter (a -> a.contains ("_FX"))
-                .filter (a -> a.contains ("_ZXB"))
+                .filter (a -> !a.contains ("_"))
                 .collect (Collectors.toList ());
         System.out.println (collect1);
         // System.out.println (collect1.get (0));
@@ -651,11 +652,11 @@ public class Demo1 {
 
     @Test
     public void test39(){
-        String a = "sda,31";
+        String a = "sda";
         String[] split = a.split (",");
         System.out.println (split.length);
         System.out.println (split[0]);
-        System.out.println (split[1]);
+        // System.out.println (split[1]);
     }
 
     @Test
@@ -738,5 +739,22 @@ public class Demo1 {
         List<Person> personList = Person.getPersonList ();
         List<Person> collect = personList.stream ().filter (a -> !"Tom".equals (a.getName ()) && !"Ato".equals (a.getName ())).collect (Collectors.toList ());
         System.out.println (collect);
+    }
+
+    @Test
+    public void test49(){
+        Random rand = new Random();
+        String num = Integer.toString(rand.nextInt(10));
+        System.out.println (num);
+        System.out.println (!"1".equals (num));
+    }
+
+    @Test
+    public void test50(){
+        String amount = "-160";
+        BigDecimal bigDecimal160 = new BigDecimal (amount);
+        BigDecimal bigDecimal80 = bigDecimal160.divide (new BigDecimal (2), 2, RoundingMode.HALF_UP);
+        System.out.println (bigDecimal160);
+        System.out.println (bigDecimal80);
     }
 }
