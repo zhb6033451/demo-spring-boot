@@ -757,4 +757,13 @@ public class Demo1 {
         System.out.println (bigDecimal160);
         System.out.println (bigDecimal80);
     }
+
+    @Test
+    public void test51(){
+        List list = new ArrayList();
+        String num = null;
+        list.add (Person.getPersonList ());
+        list.add (num);
+        System.out.println (null == list.get (1));
+    }
 }
