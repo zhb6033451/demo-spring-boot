@@ -766,4 +766,36 @@ public class Demo1 {
         list.add (num);
         System.out.println (null == list.get (1));
     }
+
+    @Test
+    public void test52(){
+        Random random = new Random ();
+        String a = String.valueOf (random.nextInt (10));
+        System.out.println (a);
+        System.out.println ("1".equals (a) ? "yi" : "er");
+    }
+
+    @Test
+    public void test53(){
+        List<Person> personList = new ArrayList<Person> ();
+        personList.add (new Person ("Tom", 6000, "male", "New York", new BigDecimal ("333")));
+        personList.add (new Person ("Ato", 6000, "male", "New York", new BigDecimal ("333")));
+        personList.add (new Person ("Kal", 6000, "male", "New York", new BigDecimal ("333")));
+        personList.add (new Person ("Kal", 6000, "male", "New York", new BigDecimal ("333")));
+        Set<String> uniqueKeys = new HashSet<>();
+        List<Person> filteredList = new ArrayList<>();
+
+        for (Person info : personList) {
+            String key = info.getName () + info.getSex () + info.getArea ();
+            if (!uniqueKeys.contains(key)) {
+                uniqueKeys.add(key);
+                filteredList.add(info);
+            }
+        }
+
+        // 打印过滤后的数据
+        for (Person info : filteredList) {
+            System.out.println(info.getName() + ", " + info.getSex() + ", " + info.getArea());
+        }
+    }
 }
