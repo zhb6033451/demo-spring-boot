@@ -2,8 +2,10 @@ package com.example.demo.test;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.demo.pojo.FinFeeDetail;
 import com.example.demo.pojo.OrdOrderTermModel;
 import com.example.demo.pojo.Person;
@@ -797,5 +799,26 @@ public class Demo1 {
         for (Person info : filteredList) {
             System.out.println(info.getName() + ", " + info.getSex() + ", " + info.getArea());
         }
+    }
+
+    @Test
+    public void test54() {
+
+        List<Person> list = new ArrayList<> ();
+        Person obj1 = new Person ("Tom", 4000, "male", "New York", new BigDecimal ("333"));
+        list.add (obj1);
+        Person obj2 = new Person ("Ato", 7000, "male", "New York", new BigDecimal ("333"));
+        list.add (obj2);
+        Person obj3 = new Person ("Kal", 8000, "male", "New York", new BigDecimal ("333"));
+        list.add (obj3);
+        List<Person> young = list.stream ().filter (e -> e.getSalary () <= 7000).collect (Collectors.toList ());
+        List<Person> children = list.stream ().filter (e -> e.getSalary () < 5000).collect (Collectors.toList ());
+        HashMap map = new HashMap ();
+        map.put ("young", young);
+        map.put ("children", children);
+        String jsonString = JSON.toJSONString(map);
+        System.out.println(jsonString);
+        String jsonString2 = JSON.toJSONString(map,SerializerFeature.DisableCircularReferenceDetect);
+        System.out.println(jsonString2);
     }
 }
