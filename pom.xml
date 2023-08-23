@@ -18,6 +18,7 @@
         <java.version>1.8</java.version>
         <!--跳过测试类打包-->
         <skipTests>true</skipTests>
+        <hutool.version>RELEASE</hutool.version>
     </properties>
     <dependencies>
         <dependency>
@@ -112,7 +113,8 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>4.5.15</version>
+<!--            <version>4.5.15</version>-->
+            <version>${hutool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>

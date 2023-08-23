@@ -70,7 +70,7 @@ public class DownloadController {
         String userAgent = req.getHeader("User-Agent");
         // 针对IE或者以IE为内核的浏览器：
         if(userAgent.contains("MSIE")||userAgent.contains("Trident")) {
-            fileName = URLUtil.encode(fileName,"UTF-8");
+            fileName = URLUtil.encode(fileName);
         } else {
             // 非IE浏览器的处理：
             fileName = new String(fileName.getBytes("UTF-8"),"ISO-8859-1");

@@ -821,4 +821,24 @@ public class Demo1 {
         String jsonString2 = JSON.toJSONString(map,SerializerFeature.DisableCircularReferenceDetect);
         System.out.println(jsonString2);
     }
+
+    @Test
+    public void test55() {
+        List<FinFeeDetail> list = new ArrayList<> ();
+        FinFeeDetail f1 = new FinFeeDetail ();
+        f1.setIsDeleted (false);
+        f1.setItemCode ("1");
+        list.add (f1);
+        FinFeeDetail f2 = new FinFeeDetail ();
+        f2.setIsDeleted (true);
+        f2.setItemCode ("2");
+        list.add (f2);
+        FinFeeDetail f3 = new FinFeeDetail ();
+        f3.setIsDeleted (true);
+        f3.setItemCode ("3");
+        list.add (f3);
+        list.removeIf (FinFeeDetail::getIsDeleted);
+        String jsonString = JSON.toJSONString(list);
+        System.out.println (jsonString);
+    }
 }
