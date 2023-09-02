@@ -25,4 +25,9 @@ public class Demo2 {
         String sha1Hex = DigestUtil.sha1Hex (format);
         System.out.println ("sha1加密后字符串:  "+sha1Hex);
     }
+
+    @Test
+    public void test02() {
+
+    }
 }
