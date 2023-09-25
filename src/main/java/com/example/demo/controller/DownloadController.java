@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @RestController
 public class DownloadController {
@@ -73,7 +74,7 @@ public class DownloadController {
             fileName = URLUtil.encode(fileName);
         } else {
             // 非IE浏览器的处理：
-            fileName = new String(fileName.getBytes("UTF-8"),"ISO-8859-1");
+            fileName = new String(fileName.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
         }
         res.setHeader("Content-disposition", "attachment; filename=" + fileName);
         res.setContentType("application/vnd.ms-excel; charset=utf-8");

@@ -11,7 +11,6 @@ import com.example.demo.pojo.OrdOrderTermModel;
 import com.example.demo.pojo.Person;
 import com.example.demo.pojo.Pojo;
 import com.example.demo.utils.BenUtil;
-import com.example.demo.utils.CollectorsUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
@@ -238,7 +237,8 @@ public class Demo1 {
         // System.out.println (personList);
         // 按照name一样 计算成一条 生成新的list
         Map<String, BigDecimal> collect = personList.stream ()
-                .collect (Collectors.groupingBy (Person::getName, CollectorsUtil.summingBigDecimal (Person::getMoney)));
+                // .collect (Collectors.groupingBy (Person::getName, CollectorsUtil.summingBigDecimal (Person::getMoney)));
+                .collect (Collectors.groupingBy (Person::getName, Collectors.reducing(BigDecimal.ZERO, Person::getMoney, BigDecimal::add)));
         System.out.println (collect);
     }
 

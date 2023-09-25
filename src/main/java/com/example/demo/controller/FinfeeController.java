@@ -31,7 +31,7 @@ public class FinfeeController {
     @GetMapping("/test")
     public String getTest(){
         Random random = new Random ();
-        int num = random.nextInt(100);
+        int num = random.nextInt(50);
         return "test - "+ num;
     }
 

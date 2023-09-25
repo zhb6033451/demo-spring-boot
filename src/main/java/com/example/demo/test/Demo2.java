@@ -6,6 +6,8 @@ import cn.hutool.crypto.digest.DigestUtil;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.regex.Pattern;
+
 @SpringBootTest
 public class Demo2 {
 
@@ -28,6 +30,19 @@ public class Demo2 {
 
     @Test
     public void test02() {
-
+        // 正则表达式 用于匹配手机号
+        String regExp = "^1[3|4|5|7|8][0-9]{9}$";
+        // 要验证的字符串
+        String str = "12345678901";
+        // 编译正则表达式
+        Pattern pattern = Pattern.compile (regExp);
+        // 忽略大小写的写法
+        // Pattern pat = Pattern.compile(regExp, Pattern.CASE_INSENSITIVE);
+        // 正则表达式的匹配器
+        boolean matches = pattern.matcher (str).matches ();
+        // 字符串是否与正则表达式相匹配
+        System.out.println (matches);
     }
+
+
 }
