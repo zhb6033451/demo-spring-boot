@@ -52,4 +52,5 @@ public class FinfeeServiceImpl extends ServiceImpl<FinfeeMapper, FinFeeDetail> i
         baseMapper.updateById (finFeeDetail);
         System.out.println ("updateFee");
     }
+
 }

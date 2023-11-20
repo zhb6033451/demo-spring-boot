@@ -118,9 +118,13 @@ public class Demo1 {
 
     @Test
     public void test4_2(){
-        BigDecimal a = new BigDecimal("0.01");
-        BigDecimal multiply = a.multiply (new BigDecimal (String.valueOf (5)).divide (new BigDecimal ("100"),2,BigDecimal.ROUND_HALF_UP));
+        BigDecimal a = new BigDecimal("22180.00");
+        BigDecimal multiply = a.multiply (new BigDecimal ("14")).divide (new BigDecimal ("15"), 2, BigDecimal.ROUND_HALF_UP).subtract (a);
+        BigDecimal multiply2 = a.multiply (new BigDecimal ("14")).divide (new BigDecimal ("15"), 2, RoundingMode.HALF_UP).subtract (a);
+
+        // BigDecimal multiply = a.multiply (new BigDecimal (String.valueOf (5)).divide (new BigDecimal ("100"),2,BigDecimal.ROUND_HALF_UP));
         System.out.println (multiply);
+        System.out.println (multiply2);
     }
 
     public static void test5(){
@@ -841,4 +845,5 @@ public class Demo1 {
         String jsonString = JSON.toJSONString(list);
         System.out.println (jsonString);
     }
+
 }
