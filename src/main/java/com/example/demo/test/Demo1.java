@@ -11,6 +11,9 @@ import com.example.demo.pojo.OrdOrderTermModel;
 import com.example.demo.pojo.Person;
 import com.example.demo.pojo.Pojo;
 import com.example.demo.utils.BenUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
@@ -846,4 +849,74 @@ public class Demo1 {
         System.out.println (jsonString);
     }
 
+    @Test
+    public void test56() throws JsonProcessingException {
+        // {"snoString":"value1","signYearType":"value2","consumeCategory":"value3","itemCode":"value4","day":"value5"}
+        // String s = "{\"snoString\":\"202201134252,20211110926\",\"signYearType\":\"2023\",\"consumeCategory\":null,\"itemCode\":\"value4\",\"day\":\"value5\"}";
+        // String s = "{\"snoString\":\"202201134252,20211110926\",\"signYearType\":\"2023\"}";
+        String s = "{\"snoString\":\"20210129919_ZX01,20190311408_ZX01,20210131628_ZX01,202101132714_ZX01,202101133071_ZX01,20200129093_ZX01,20200129027_ZX01,20200129046_ZX01,20200128987_ZX01,202101132747_ZX01,301675_ZX01,20190114862_ZX01,20190309936_ZX01,20190312332_ZX01,20190312398_ZX01,20200115859_ZX01,20200313124_ZX01,20200314036_ZX01,20200611730_ZX01,202201133586_ZX01,202101132884_ZX01,20210131117_ZX01,20210130272_ZX01,20210100216_ZX01,20210100193_ZX01,20210130273_ZX01,20210100217_ZX01,20200117209_ZX01,20200129003_ZX01,20200129119_ZX01,20200129141_ZX01,20200129069_ZX01,20200129070_ZX01,20200129149_ZX01,20200129074_ZX01,20210129390_ZX01,20210129292_ZX01,20210129534_ZX01,20180301723_ZX01,20200313633_ZX01,20200313096_ZX01,20210325634_ZX01,20200324968_ZX01,20200324975_ZX01,20210325103_ZX01,20180306009_ZX01,20200324951_ZX01,20210325506_ZX01,20200325054_ZX01,20210325281_ZX01,20210325108_ZX01,20200324953_ZX01,202103126441_ZX01,20200312880_ZX01,20200324960_ZX01,20210326166_ZX01,20210325476_ZX01,20200325055_ZX01,20200312716_ZX01,108737_ZX01,202201135492_ZX01,20210130795_ZX01,20210130104_ZX01,20210129528_ZX01,20200129039_ZX01,202101132342_ZX01,202101132868_ZX01,20200115626_ZX01,43769_ZX01,20200129235_ZX01,20200129020_ZX01,20210129405_ZX01,20210129351_ZX01,20210100276_ZX01,20200129021_ZX01,20200129006_ZX01,20200129038_ZX01,20210100184_ZX01,20200114986_ZX01,20190114581_ZX01,20210130209_ZX01,20200115114_ZX01,396546_ZX01,202201137760_ZX01,202202126826_ZX01,202202127403_ZX01,202213103218_ZX01,202216000140_ZX02,202216000298_ZX01,20211300725_ZX01,20200116406_ZX01,20200612010_ZX01,20200115233_ZX01,20190112433_ZX01,20200115248_ZX01,9552_ZX01,202301137767_ZX01,202301140161_ZX01,20200313301_ZX02,20200115256_ZX02,20180108321_ZX02,20190311464_ZX02,20200313707_ZX01,202303128776_ZX01,202301140691_ZX01,202301140690_ZX01,202301139639_ZX01,202301138806_ZX01,202201137908_ZX01,202201136942_ZX02,202201136221_ZX01,202201134572_ZX02,202201134539_ZX01,202301140712_ZX01,202301140663_ZX01,202301140659_ZX01,202301140375_ZX01,202301140409_ZX01,202301140289_ZX01,202301140065_ZX01,202301139217_ZX01,202301139112_ZX01,202201135910_ZX01,202201135909_ZX01,202201134722_ZX01,20190112789_ZX02,20180103857_ZX02,202316000710_ZX01,202301140496_ZX01,202301138931_ZX01,202201134572_ZX03,202201134539_ZX02,202201136942_ZX03,202201137908_ZX02,202301138806_ZX02,202301139639_ZX02,202301140691_ZX02,202301140289_ZX02,202301139112_ZX02,202301140663_ZX02,202201135909_ZX02,202201135910_ZX02,202202127679_ZX01,202201134722_ZX02,202301139217_ZX02,202301140409_ZX02,202301140712_ZX02,202301140065_ZX02,202201136221_ZX02,202301140690_ZX02,20190112789_ZX03,202301140375_ZX02,202301140659_ZX02\",\"signYearType\":\"2023\"}";
+        // 创建ObjectMapper对象
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // 将JSON字符串转换为JsonNode对象
+        JsonNode jsonNode = objectMapper.readTree(s);
+
+        // 获取参数值
+        String snoString = jsonNode.get("snoString").asText();
+        String signYearType = jsonNode.get("signYearType").asText();
+        String consumeCategory = null;
+        if (jsonNode.has("consumeCategory")) {
+            consumeCategory = jsonNode.get("consumeCategory").asText();
+        }
+        String itemCode = null;
+        if (jsonNode.has("itemCode")) {
+            itemCode = jsonNode.get("itemCode").asText();
+        }
+        String day = null;
+        if (jsonNode.has("day")) {
+            day = jsonNode.get("day").asText();
+        }
+
+        System.out.println (snoString);
+        System.out.println (snoString.split (",").length);
+        System.out.println (snoString.split (",")[0]);
+        System.out.println (signYearType);
+        System.out.println (consumeCategory);
+        System.out.println (itemCode);
+        System.out.println (day);
+    }
+
+    @Test
+    public void test57(){
+        String s = "2021-2022";
+        if (s.contains ("-")) {
+            String[] split = s.split ("-");
+            String s1 = split[0];
+            int s2 = Integer.parseInt (split[1]);
+            System.out.println (s1);
+            System.out.println (s2);
+            if (s1 == null) {
+                System.out.println ("null");
+            }else {
+                System.out.println ("not null");
+            }
+        }
+    }
+
+    @Test
+    public void test58() throws ParseException {
+        String time = "2018-07-29 12:26:32";
+        SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+        Date date1 = format.parse (time);
+        // Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd");
+        int dayOfMonth = Integer.parseInt(sdf.format(date1));
+        if (dayOfMonth >= 1 && dayOfMonth <= 10) {
+            System.out.println ("第一旬");
+        } else if (dayOfMonth >= 11 && dayOfMonth <= 20) {
+            System.out.println ("第二旬");
+        } else {
+            System.out.println ("第三旬");
+        }
+    }
 }
