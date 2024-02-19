@@ -919,4 +919,48 @@ public class Demo1 {
             System.out.println ("第三旬");
         }
     }
+
+    @Test
+    public void test59() {
+        String signYearType = "2021";
+        String month = "2";
+        String xun = "3";
+        int year = Integer.parseInt(signYearType);
+        int monthValue = Integer.parseInt(month);
+        int xunValue = Integer.parseInt(xun);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, monthValue - 1, 1); // 设置为指定年月的第一天
+
+        if (xunValue == 1) {
+            calendar.set(Calendar.DAY_OF_MONTH, 10);
+        } else if (xunValue == 2) {
+            calendar.set(Calendar.DAY_OF_MONTH, 20);
+        } else if (xunValue == 3) {
+            int lastDayOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+            calendar.set(Calendar.DAY_OF_MONTH, lastDayOfMonth);
+        }
+        Date sendDate = calendar.getTime ();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(sendDate);
+        System.out.println("传出参数：" + formattedDate);
+    }
+
+    @Test
+    public void test60() {
+        List<String> dateStringList = Arrays.asList(
+                "2023-09-01", "2023-09-11", "2023-09-21", "2023-10-01", "2023-10-11", "2023-10-21",
+                "2023-11-01", "2023-11-11", "2023-11-21", "2023-12-01", "2023-12-11", "2023-12-21",
+                "2024-01-01", "2024-01-11", "2024-01-21"
+        );
+        String inputDate = "2023-09-11";
+        LocalDate inputLocalDate = LocalDate.parse(inputDate, DateTimeFormatter.ISO_LOCAL_DATE);
+
+        List<String> result = dateStringList.stream()
+                .filter(date -> LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE).isAfter(inputLocalDate))
+                .collect(Collectors.toList());
+
+        System.out.println("范围是：" + result);
+    }
 }
