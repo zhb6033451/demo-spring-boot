@@ -1,11 +1,18 @@
 package com.example.demo.test;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.digest.DigestUtil;
+import com.alibaba.fastjson.JSON;
+import com.example.demo.pojo.DetailTableInfo;
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 @SpringBootTest
@@ -44,4 +51,33 @@ public class Demo2 {
         System.out.println (matches);
     }
 
+    @Test
+    public void test03(){
+        // 读取文件json.txt,获取里面内容
+        String path = "json.txt";
+        // 读取文件内容
+        String content = FileUtil.readUtf8String (path);
+        System.out.println (content);
+        // 转成List<DetailTableInfo> detailTableInfos
+        List<DetailTableInfo> detailTableInfos = JSON.parseArray (content, DetailTableInfo.class);
+        // 转换为json字符串
+        System.out.println (JSON.toJSONString (detailTableInfos));
+        if (CollectionUtils.isNotEmpty (detailTableInfos)) {
+            DetailTableInfo detailTableInfo1 = detailTableInfos.get (1);
+            List<Object> dtnum1 = detailTableInfo1.getDtnum1 ();
+            // 添加新字段
+            Map<String, Object> o = (Map<String, Object>) dtnum1.get (0);
+            o.put ("SKRYHKZP", "1");
+            o.put ("SKRZJZ", "2");
+        }
+        System.out.println (JSON.toJSONString (detailTableInfos));
+    }
+
+    @Test
+    public void test04(){
+        // date转成yy-MM-dd的字符串
+        Date date = new Date ();
+        String format = DateUtil.format (date, "yy-MM-dd");
+        System.out.println (format);
+    }
 }
