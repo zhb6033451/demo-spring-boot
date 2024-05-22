@@ -5,7 +5,9 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.pojo.DetailTableInfo;
+import com.example.demo.pojo.OaJsonResponse;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -79,5 +81,20 @@ public class Demo2 {
         Date date = new Date ();
         String format = DateUtil.format (date, "yy-MM-dd");
         System.out.println (format);
+    }
+
+    @Test
+    public void test05() {
+        // {"message":{"errcode":0,"requestId":1001426738342535186,"errmsg":"success"}}
+        String path = "json.txt";
+        String result = FileUtil.readUtf8String (path);
+        System.out.println (result);
+        JSONObject jsonObject = JSON.parseObject(result);
+        // 提取 "message" 部分
+        JSONObject messageObject = jsonObject.getJSONObject("message");
+        // 映射到 ResponseMessage 对象
+        OaJsonResponse createResult = messageObject.toJavaObject(OaJsonResponse.class);
+        String oaRequestid = String.valueOf (createResult.getRequestId ());
+        System.out.println (createResult.toString ());
     }
 }
